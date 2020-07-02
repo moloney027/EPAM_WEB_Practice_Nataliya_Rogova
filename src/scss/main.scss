@@ -1,10 +1,19 @@
+$color: rgb(233, 255, 153);
+$backColor: rgb(138, 56, 192);
+$bordColor: rgb(70, 7, 78);
+$shadowColor: rgb(0, 0, 0);
+$bodyColor: rgb(186, 130, 223);
+$font-stack: Helvetica, sans-serif;
+ 
  h1 {
-    color: rgb(221, 203, 154);
-    background-color: rgb(138, 56, 192);
+    color: $color;
+    background-color: $backColor;
     padding: 0.8em;
-    font-size: 60px;
-    border: 3px solid rgb(70, 7, 78);
+    border: 3px solid $bordColor;
+    text-align: center;
+    text-shadow: $shadowColor 0 0 40px;
+    font: bold 500% $font-stack;
 }
  body {
-    background-color: rgb(186, 130, 223);
+    background-color: $bodyColor;
  }
