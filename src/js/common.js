@@ -1,8 +1,20 @@
-let count = 0;
-function functionClick() {
-  count+=1;
-  console.log("Click");
-  document.getElementById("cl").innerHTML = count;
- }
+function action1() {
+  (response = document.getElementById("response")),
+    (output = "Active: voices list");
+  response.innerHTML = output;
+}
+document.getElementById("bar").onclick = action1;
 
- document.getElementsByTagName("body")[0].onclick = functionClick
+function action2() {
+  (response = document.getElementById("response")),
+    (output = "Active: speaker-mode");
+  response.innerHTML = output;
+}
+document.getElementById("micr").onclick = action2;
+
+function action3() {
+  (response = document.getElementById("response")),
+    (output = "Active: listener-mode");
+  response.innerHTML = output;
+}
+document.getElementById("mus").onclick = action3;

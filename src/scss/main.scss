@@ -1,19 +1,130 @@
-$color: rgb(233, 255, 153);
-$backColor: rgb(138, 56, 192);
-$bordColor: rgb(70, 7, 78);
-$shadowColor: rgb(0, 0, 0);
-$bodyColor: rgb(186, 130, 223);
-$font-stack: Helvetica, sans-serif;
- 
- h1 {
-    color: $color;
-    background-color: $backColor;
-    padding: 0.8em;
-    border: 3px solid $bordColor;
-    text-align: center;
-    text-shadow: $shadowColor 0 0 40px;
-    font: bold 500% $font-stack;
+$font-stack: Segoe UI, sans-serif;
+$color-shadow: rgba(204, 204, 204, 0.5);
+$color: rgb(115, 115, 115);
+$color-checked: rgb(1, 150, 133);
+
+.mode {
+  font: 480% $font-stack;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  transform: translate(-50%, -132%);
 }
- body {
-    background-color: $bodyColor;
- }
+
+.bigDiv {
+  width: 100%;
+  height: 18%;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0 0 25px $color-shadow;
+}
+
+.miniDiv {
+  width: 30%;
+  height: 95%;
+  display: inline-block;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+}
+
+label {
+  position: relative;
+  color: $color;
+  transition: 0.4s;
+  font-size: 50px;
+}
+
+.fa {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+}
+
+.voices {
+  left: -35px;
+}
+
+.micro {
+  left: -57px;
+}
+
+.music {
+  left: -22px;
+}
+
+label > span {
+  font-size: 27px;
+  position: absolute;
+  top: 80px;
+  font-family: $font-stack;
+  font-weight: 500;
+}
+
+input[type="radio"]:checked + label {
+  color: $color-checked;
+}
+
+@media screen and (max-width: 411px) {
+  .mode {
+    font: 145% $font-stack;
+    width: 100%;
+  }
+
+  .bigDiv {
+    height: 7.5%;
+  }
+
+  label {
+    font-size: 22px;
+    left: -18px;
+  }
+
+  .fa {
+    position: absolute;
+    top: 30%;
+  }
+
+  .voices {
+    left: -46px;
+  }
+
+  .fa-bars {
+    left: -28px;
+  }
+
+  .micro {
+    left: -17px;
+  }
+
+  .fa-microphone {
+    left: 11px;
+  }
+
+  .music {
+    left: 34px;
+  }
+
+  .fa-music {
+    left: 45px;
+  }
+
+  label > span {
+    font-size: 13px;
+    position: absolute;
+    top: 30px;
+    font-family: $font-stack;
+    font-weight: 480;
+  }
+}
