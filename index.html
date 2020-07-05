@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" , href="/dist/app.css" />
-    <!-- <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script> -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <title>Project2</title>
   </head>
   <body>
@@ -17,21 +13,33 @@
       <div class="miniDiv">
         <input type="radio" onclick="action1();" name="icon" id="bar" />
         <label for="bar">
-          <i class="fa fa-bars" aria-hidden="true"></i>
+          <span
+            class="iconify fa-bars"
+            data-icon="ic:sharp-playlist-play"
+            data-inline="false"
+          ></span>
           <span class="voices">All voices</span>
         </label>
       </div>
       <div class="miniDiv">
         <input type="radio" onclick="action2();" name="icon" id="micr" />
         <label for="micr">
-          <i class="fa fa-microphone" aria-hidden="true"></i>
+          <span
+            class="iconify fa-microphone"
+            data-icon="mdi:microphone"
+            data-inline="false"
+          ></span>
           <span class="micro">Microphone</span>
         </label>
       </div>
       <div class="miniDiv">
         <input type="radio" onclick="action3();" name="icon" id="mus" />
         <label for="mus">
-          <i class="fa fa-music" aria-hidden="true"></i>
+          <span
+            class="iconify fa-music"
+            data-icon="ic:baseline-speaker"
+            data-inline="false"
+          ></span>
           <span class="music">Stream</span>
         </label>
       </div>

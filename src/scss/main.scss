@@ -3,6 +3,7 @@ $color-shadow: rgba(204, 204, 204, 0.5);
 $color: rgb(115, 115, 115);
 $color-checked: rgb(1, 150, 133);
 
+// для десктопной версии
 .mode {
   font: 480% $font-stack;
   top: 50%;
@@ -46,28 +47,40 @@ label {
   font-size: 50px;
 }
 
-.fa {
+.iconify {
   position: absolute;
   top: 43%;
-  left: 50%;
+  left: 30%;
 }
 
 .voices {
-  left: -35px;
+  left: -200px;
+}
+
+.fa-bars {
+  left: -165px;
 }
 
 .micro {
-  left: -57px;
+  left: -70px;
+}
+
+.fa-microphone {
+  left: -20px;
 }
 
 .music {
-  left: -22px;
+  left: 93px;
+}
+
+.fa-music {
+  left: 111px;
 }
 
 label > span {
   font-size: 27px;
   position: absolute;
-  top: 80px;
+  top: 77px;
   font-family: $font-stack;
   font-weight: 500;
 }
@@ -76,7 +89,8 @@ input[type="radio"]:checked + label {
   color: $color-checked;
 }
 
-@media screen and (max-width: 411px) {
+// для мобильной версии (вертикальная ось)
+@media screen and (max-width: 414px) {
   .mode {
     font: 145% $font-stack;
     width: 100%;
@@ -91,13 +105,13 @@ input[type="radio"]:checked + label {
     left: -18px;
   }
 
-  .fa {
+  .iconify {
     position: absolute;
     top: 30%;
   }
 
   .voices {
-    left: -46px;
+    left: -44px;
   }
 
   .fa-bars {
@@ -109,22 +123,72 @@ input[type="radio"]:checked + label {
   }
 
   .fa-microphone {
-    left: 11px;
+    left: 7px;
   }
 
   .music {
-    left: 34px;
+    left: 36px;
   }
 
   .fa-music {
-    left: 45px;
+    left: 44px;
   }
 
   label > span {
     font-size: 13px;
-    position: absolute;
     top: 30px;
-    font-family: $font-stack;
+    font-weight: 480;
+  }
+}
+
+// для мобильной версии (горизонтальная ось)
+@media screen and (max-height: 414px) {
+  .mode {
+    font: 200% $font-stack;
+    width: 100%;
+  }
+
+  .bigDiv {
+    height: 14%;
+  }
+
+  label {
+    font-size: 25px;
+    left: -18px;
+  }
+
+  .iconify {
+    position: absolute;
+    top: 25%;
+  }
+
+  .voices {
+    left: -44px;
+  }
+
+  .fa-bars {
+    left: -28px;
+  }
+
+  .micro {
+    left: -17px;
+  }
+
+  .fa-microphone {
+    left: 5px;
+  }
+
+  .music {
+    left: 33px;
+  }
+
+  .fa-music {
+    left: 41px;
+  }
+
+  label > span {
+    font-size: 13px;
+    top: 33px;
     font-weight: 480;
   }
 }
