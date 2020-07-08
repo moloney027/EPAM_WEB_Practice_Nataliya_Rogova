@@ -1,3 +1,6 @@
+import "./client";
+const socket = require("./client.js");
+
 function action1() {
   (response = document.getElementById("response")),
     (output = "Active: voices list");
@@ -15,16 +18,16 @@ function action2() {
   var constraints = { audio: true };
   navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
     const mediaRecorder = new MediaRecorder(mediaStream);
-      
-    mediaRecorder.ondataavailable = function(e) {
+
+    mediaRecorder.ondataavailable = function (e) {
       console.log("sending data");
       socket.emit("audioMessage", e.data);
     };
-  
+
     mediaRecorder.start();
-  
+
     // завершить через 3 секунды
-    setTimeout(function() {
+    setTimeout(function () {
       mediaRecorder.stop();
       console.log("Запись завершена!");
     }, 3000);
@@ -47,7 +50,6 @@ function action2() {
     //   mediaRecorder.stop();
     //   console.log("Запись завершена!");
     // }, 3000);
-  
   });
 }
 document.getElementById("micr").onclick = action2;
