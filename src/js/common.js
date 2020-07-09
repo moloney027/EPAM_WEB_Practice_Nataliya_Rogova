@@ -1,25 +1,27 @@
 const { socket } = require("./client.js");
+var mode = new Boolean(false);
+var mediaRecorder;
 
 function action1() {
-  var response = document.getElementById("response");
-  var output = "Active: voices list";
+  let response = document.getElementById("response");
+  let output = "Active: voices list";
   response.innerHTML = output;
 }
-document.getElementById("bar").onclick = action1;
+document.getElementById("bar").addEventListener("click", action1);
 
 function action2() {
-  var response = document.getElementById("response");
-  var output = "Active: speaker-mode";
+  let response = document.getElementById("response");
+  let output = "Active: speaker-mode";
   response.innerHTML = output;
 }
-document.getElementById("micr").onclick = action2;
+document.getElementById("micr").addEventListener("click", action2);
 
-document.getElementById("micr").addEventListener("click", myFunc);
+document.getElementById("micr").addEventListener("mousedown", myFunc);
 
 function myFunc() {
   var constraints = { audio: true };
   navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
-    const mediaRecorder = new MediaRecorder(mediaStream);
+    mediaRecorder = new MediaRecorder(mediaStream);
 
     mediaRecorder.onstart = function (e) {
       console.log("(on) Recording started!");
@@ -31,12 +33,12 @@ function myFunc() {
     };
 
     mediaRecorder.onstop = function (e) {
-      console.log("(on) Recording started!");
+      console.log("(on) Recording stop!");
     };
 
     mediaRecorder.start();
 
-    document.getElementById("micr").addEventListener("contextmenu", funcStop);
+    document.getElementById("micr").addEventListener("mouseup", funcStop);
 
     function funcStop() {
       mediaRecorder.stop();
@@ -46,8 +48,8 @@ function myFunc() {
 }
 
 function action3() {
-  var response = document.getElementById("response");
-  var output = "Active: listener-mode";
+  let response = document.getElementById("response");
+  let output = "Active: listener-mode";
   response.innerHTML = output;
 }
-document.getElementById("mus").onclick = action3;
+document.getElementById("mus").addEventListener("click", action3);
