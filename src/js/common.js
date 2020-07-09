@@ -11,29 +11,43 @@ function action2() {
   var response = document.getElementById("response");
   var output = "Active: speaker-mode";
   response.innerHTML = output;
+}
+document.getElementById("micr").onclick = action2;
 
+document.getElementById("micr").addEventListener("click", myFunc);
+
+function myFunc() {
   var constraints = { audio: true };
   navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
     const mediaRecorder = new MediaRecorder(mediaStream);
 
+    mediaRecorder.onstart = function (e) {
+      console.log("(on) Recording started!");
+    };
+
     mediaRecorder.ondataavailable = function (e) {
-      console.log("sending data");
+      console.log("(on) Sending data");
       socket.emit("audioMessage", e.data);
+    };
+
+    mediaRecorder.onstop = function (e) {
+      console.log("(on) Recording started!");
     };
 
     mediaRecorder.start();
 
-    setTimeout(function () {
+    document.getElementById("micr").addEventListener("contextmenu", funcStop);
+
+    function funcStop() {
       mediaRecorder.stop();
-      console.log("Запись завершена!");
-    }, 3000);
+      console.log("Recording Complete!");
+    }
   });
 }
-document.getElementById("micr").onclick = action2;
 
 function action3() {
-  (response = document.getElementById("response")),
-    (output = "Active: listener-mode");
+  var response = document.getElementById("response");
+  var output = "Active: listener-mode";
   response.innerHTML = output;
 }
 document.getElementById("mus").onclick = action3;

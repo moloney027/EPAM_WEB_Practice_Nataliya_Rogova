@@ -31,6 +31,7 @@ module.exports = {
   },
   devServer: {
     overlay: true,
+    contentBase: "./src",
   },
   plugins: [
     new MiniCssExtractPlugin({
