@@ -1,6 +1,5 @@
 const { socket } = require("./client.js");
 var mode = new Boolean(false);
-var mediaRecorder;
 
 function action1() {
   let response = document.getElementById("response");
@@ -16,35 +15,40 @@ function action2() {
 }
 document.getElementById("micr").addEventListener("click", action2);
 
-document.getElementById("micr").addEventListener("mousedown", myFunc);
+document.getElementById("micr").addEventListener("click", funcRecord);
 
-function myFunc() {
-  var constraints = { audio: true };
-  navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
-    mediaRecorder = new MediaRecorder(mediaStream);
+function funcRecord() {
+  if (mode == false) {
+    mode = true;
+    var constraints = { audio: true };
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then(function (mediaStream) {
+        const mediaRecorder = new MediaRecorder(mediaStream);
 
-    mediaRecorder.onstart = function (e) {
-      console.log("(on) Recording started!");
-    };
+        mediaRecorder.onstart = function (e) {
+          console.log("Recording started!");
+        };
 
-    mediaRecorder.ondataavailable = function (e) {
-      console.log("(on) Sending data");
-      socket.emit("audioMessage", e.data);
-    };
+        mediaRecorder.ondataavailable = function (e) {
+          socket.emit("audioMessage", e.data);
+        };
 
-    mediaRecorder.onstop = function (e) {
-      console.log("(on) Recording stop!");
-    };
+        mediaRecorder.onstop = function (e) {
+          console.log("Recording stop!");
+        };
 
-    mediaRecorder.start();
+        mediaRecorder.start();
 
-    document.getElementById("micr").addEventListener("mouseup", funcStop);
-
-    function funcStop() {
-      mediaRecorder.stop();
-      console.log("Recording Complete!");
-    }
-  });
+        document
+          .getElementById("micr")
+          .addEventListener("click", () => mediaRecorder.stop(), {
+            once: true,
+          });
+      });
+  } else {
+    mode = false;
+  }
 }
 
 function action3() {

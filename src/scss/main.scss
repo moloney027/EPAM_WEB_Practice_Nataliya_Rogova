@@ -77,7 +77,9 @@ $color-checked: rgb(1, 150, 133);
   left: 111px;
 }
 
-.label > .micro,.voices,.music {
+.label > .micro,
+.voices,
+.music {
   font-size: 27px;
   position: absolute;
   top: 77px;
@@ -134,7 +136,9 @@ $color-checked: rgb(1, 150, 133);
     left: 44px;
   }
 
-  .label > .micro,.voices,.music {
+  .label > .micro,
+  .voices,
+  .music {
     font-size: 13px;
     top: 30px;
     font-weight: 480;
@@ -186,7 +190,9 @@ $color-checked: rgb(1, 150, 133);
     left: 41px;
   }
 
-  .label > .micro,.voices,.music {
+  .label > .micro,
+  .voices,
+  .music {
     font-size: 13px;
     top: 33px;
     font-weight: 480;
