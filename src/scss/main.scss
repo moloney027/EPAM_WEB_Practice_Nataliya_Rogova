@@ -4,6 +4,14 @@ $color: rgb(115, 115, 115);
 $color-checked: rgb(1, 150, 133);
 
 // для десктопной версии
+
+.playl {
+  width: 323px;
+  height: 630px;
+  list-style-type: none;
+  overflow: auto;
+}
+
 .mode {
   font: 480% $font-stack;
   top: 50%;
@@ -93,6 +101,11 @@ $color-checked: rgb(1, 150, 133);
 
 // для мобильной версии (вертикальная ось)
 @media screen and (max-width: 414px) {
+  .playl {
+    width: 310px;
+    height: 285px;
+  }
+
   .mode {
     font: 145% $font-stack;
     width: 100%;
@@ -147,6 +160,11 @@ $color-checked: rgb(1, 150, 133);
 
 // для мобильной версии (горизонтальная ось)
 @media screen and (max-height: 414px) {
+  .playl {
+    width: 310px;
+    height: 150px;
+  }
+
   .mode {
     font: 200% $font-stack;
     width: 100%;
