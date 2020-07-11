@@ -41,9 +41,9 @@ async function funcGetAllVoices(url) {
     xmlHttp.onload = function () {
       console.log(xmlHttp.response);
       // все сообщения
-      //for (let i = 0, len = xmlHttp.response.length; i < len; i++) {
-      // когда слишком много сообщений
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0, len = xmlHttp.response.length; i < len; i++) {
+        // когда слишком много сообщений
+        // for (let i = 0; i < 15; i++) {
         if (xmlHttp.response[i].audioBlob[0] != undefined) {
           let audioBlob = new Blob([
             new Uint8Array(xmlHttp.response[i].audioBlob[0].data).buffer,
@@ -90,7 +90,7 @@ function funcRecord() {
 }
 
 // для stream
-function funcStream() {
+async function funcStream() {
   socket.on("audioMessage", function (audioChunks) {
     const audioBlob = new Blob(audioChunks);
     const audioUrl = URL.createObjectURL(audioBlob);
