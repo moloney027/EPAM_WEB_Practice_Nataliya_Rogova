@@ -5,7 +5,9 @@ const path = require("path"),
   server = require("http").createServer(app),
   io = require("socket.io").listen(server),
   DIST_DIR = __dirname,
-  HTML_FILE = path.join(DIST_DIR, "../client/src/index.html"),
+  HTML_FILE = path.join(DIST_DIR, "../client/dist/index.html"),
+  SASS_FILE = path.join(DIST_DIR, "../client/dist/app.css"),
+  JS_FILE = path.join(DIST_DIR, "../client/dist/app.js"),
   PORT = process.env.PORT || 3000,
   voices = [];
 
@@ -13,6 +15,14 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.sendFile(HTML_FILE);
+});
+
+app.get("/app.css", (req, res) => {
+  res.sendFile(SASS_FILE);
+});
+
+app.get("/app.js", (req, res) => {
+  res.sendFile(JS_FILE);
 });
 
 server.listen(PORT, () => {
