@@ -23,3 +23,16 @@ server.listen(PORT, () => {
 app.get("/voices", (req, res) => {
   res.send(voices);
 });
+
+io.on("connection", (socket) => {
+  let countCon = socket.client.conn.server.clientsCount;
+  console.log(countCon + " users connected");
+  console.log("a user connected: " + socket.id);
+  io.emit("user", countCon);
+  socket.on("disconnect", () => {
+    let countDis = socket.client.conn.server.clientsCount;
+    console.log(countDis + " users connected");
+    console.log(socket.id + " has disconnected.");
+    io.emit("user", countDis);
+  });
+});
