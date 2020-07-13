@@ -16,8 +16,8 @@ app.get("/", (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`App listening to ${PORT}....`);
-  console.log("Press Ctrl+C to quit.");
+  console.log(`app listening to ${PORT}....`);
+  console.log("press Ctrl+C to quit.");
 });
 
 app.get("/voices", (req, res) => {
@@ -32,7 +32,13 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     let countDis = socket.client.conn.server.clientsCount;
     console.log(countDis + " users connected");
-    console.log(socket.id + " has disconnected.");
+    console.log(socket.id + " has disconnected");
     io.emit("user", countDis);
+  });
+
+  socket.on("audioMessage", (audio) => {
+    voices.push({ timeStamp: new Date().toISOString(), audioBlob: audio });
+    io.emit("audioMessage", audio);
+    console.log("audioMessage sent");
   });
 });
