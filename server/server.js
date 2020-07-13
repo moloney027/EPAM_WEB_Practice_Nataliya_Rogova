@@ -1,20 +1,25 @@
-const path = require("path");
-const express = require("express");
-const cors = require('cors');
-const app = express(),
+const path = require("path"),
+  express = require("express"),
+  cors = require("cors"),
+  app = express(),
+  server = require("http").createServer(app),
+  io = require("socket.io").listen(server),
   DIST_DIR = __dirname,
-  HTML_FILE = path.join(DIST_DIR, "../client/src/index.html");
+  HTML_FILE = path.join(DIST_DIR, "../client/src/index.html"),
+  PORT = process.env.PORT || 3000,
+  voices = [];
 
-const PORT = process.env.PORT || 3000;
-
-app.use(express.static(DIST_DIR));
 app.use(cors());
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(HTML_FILE);
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`App listening to ${PORT}....`);
   console.log("Press Ctrl+C to quit.");
+});
+
+app.get("/voices", (req, res) => {
+  res.send(voices);
 });

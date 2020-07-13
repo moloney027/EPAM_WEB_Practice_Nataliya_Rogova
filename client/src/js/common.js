@@ -1,6 +1,7 @@
 const { socket } = require("./client.js");
 var mode = new Boolean(false);
-const source = "https://voicy-speaker.herokuapp.com/voices";
+//const source = "https://voicy-speaker.herokuapp.com/voices";
+const source = "http://localhost:3000/voices";
 
 // получение списка всех сообщений с сервера (+ отображение режима)
 document.getElementById("bar").addEventListener("click", action1);
